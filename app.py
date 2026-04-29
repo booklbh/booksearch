@@ -9,7 +9,8 @@ st.set_page_config(page_title="大数据量查询工具", layout="wide")
 @st.cache_data(show_spinner="正在加载 64 万行数据，请稍候...")
 def load_data():
     # 假设你的文件名为 data.parquet
-    df = pd.read_parquet("data.parquet")
+    # df = pd.read_parquet("data.parquet")
+    df = pd.read_parquet("data.parquet", columns=["名称", "索引文本"])    
     # 强制转换类型以节省内存
     df["名称"] = df["名称"].astype(str)
     df["索引文本"] = df["索引文本"].astype(str)
